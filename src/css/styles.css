@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap');
+
+
+:root {
+
+    --card-up: #2c2c44;
+    --card-below: #34364f;
+    --soft-red: #fb6087;
+    --fondo-start: #211d2b;
+    --label: #8c8ba5;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin: 80px;
+    letter-spacing: 8px;
+    font-size: x-large;
+    text-transform: uppercase;
+}
+
+body {
+    background-color: var(--fondo-start);
+    background-image: url('https://res.cloudinary.com/dxvzsg7fa/image/upload/v1650514132/bookmark/countime/bg-stars_mtxgsz.svg');
+    font-family: 'Red Hat Text', sans-serif;
+    margin: 0;
+
+}
+
+.flipClock {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: var(--soft-red);
+
+
+}
+
+.flipUnitContainer {
+    display: block;
+    position: relative;
+    width: 140px;
+    height: 120px;
+    perspective-origin: 50% 50%;
+    perspective: 300px;
+    background-color: var(--card-up);
+    border-radius: 3px;
+    margin: 16px;
+
+}
+
+.upperCard,
+.lowerCard {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+
+}
+
+.upperCard span,
+.lowerCard span {
+    font-size: 5em;
+    font-family: 'Red Hat Text', sans-serif;
+    font-weight: lighter;
+    color: var(--soft-red);
+}
+
+.upperCard {
+    align-items: flex-end;
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.upperCard span {
+    transform: translateY(50%);
+}
+
+.lowerCard {
+    align-items: flex-start;
+
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.lowerCard span {
+    transform: translateY(-50%);
+}
+
+.flipCard {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.flipCard span {
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 5em;
+    font-weight: lighter;
+    color: var(--soft-red);
+}
+
+.flipCard.unfold {
+    top: 50%;
+    align-items: flex-start;
+    transform-origin: 50% 0%;
+    transform: rotateX(180deg);
+    background-color: var(--card-below);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+
+}
+
+.flipCard.unfold span {
+    transform: translateY(-50%);
+}
+
+.flipCard.fold {
+    top: 0%;
+    align-items: flex-end;
+    transform-origin: 50% 100%;
+    transform: rotateX(0deg);
+    background-color: var(--card-up);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+}
+
+.flipCard.fold span {
+    transform: translateY(50%);
+}
+
+.fold {
+    animation: fold 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    transform-style: preserve-3d;
+}
+
+.unfold {
+    animation: unfold 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal forwards;
+    transform-style: preserve-3d;
+}
+
+.label {
+    color: var(--label);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 8px;
+    font-size: small;
+    margin-top: 30px;
+}
+
+.footer {
+    background-image: url('https://res.cloudinary.com/dxvzsg7fa/image/upload/v1650514145/bookmark/countime/pattern-hills_dqy2t3.svg');
+    height: 200px;
+    background-repeat: no-repeat;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerLogos {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+
+}
+
+.logos {
+    width: 24px;
+    height: 24px;
+    margin: 16px;
+    color: var(--label);
+}
+
+.logos:hover {
+    color: #fb6087;
+    cursor: pointer;
+}
+
+@keyframes fold {
+    0% {
+        transform: rotateX(0deg);
+    }
+
+    100% {
+        transform: rotateX(-180deg);
+    }
+}
+
+@keyframes unfold {
+    0% {
+        transform: rotateX(180deg);
+    }
+
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+
+@media only screen and (max-width: 375px) {
+
+    .flipUnitContainer {
+        width: 70px;
+        height: 60px;
+        margin: 8px;
+    }
+
+    .upperCard span,
+    .lowerCard span,
+    .flipCard span {
+        font-size: 2em;
+    }
+
+    .label {
+        font-size: x-small;
+        letter-spacing: 2px;
+    }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 479px) {
+
+    .flipUnitContainer {
+        width: 70px;
+        height: 60px;
+        margin: 8px;
+    }
+
+    .upperCard span,
+    .lowerCard span,
+    .flipCard span {
+        font-size: 2em;
+    }
+
+    .label {
+        font-size: x-small;
+        letter-spacing: 2px;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .flipUnitContainer {
+        width: 70px;
+        height: 60px;
+        margin: 8px;
+    }
+
+    .upperCard span,
+    .lowerCard span,
+    .flipCard span {
+        font-size: 2em;
+    }
+
+    .label {
+        font-size: x-small;
+        letter-spacing: 2px;
+    }
+}
